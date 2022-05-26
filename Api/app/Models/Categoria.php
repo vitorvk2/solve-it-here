@@ -9,4 +9,8 @@ class Categoria extends Model
 {
     use HasFactory;
     private $filleable = ['nome'];
+
+    public function chat(){
+        return $this->hasMany(Chat::class);
+    }
 }

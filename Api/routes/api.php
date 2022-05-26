@@ -14,6 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::post('login', 'App\Http\Controllers\AuthController@login');
+Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+/*
+//Pode ser requisitado sem login
+Route::prefix('free')->group(function (){
+
+});
+
+
+//Apenas com login
+Route::prefix('v1')->middleware('jwt.auth')->group(function (){
+
+});
+*/
