@@ -8,7 +8,7 @@ class AuthController extends Controller
 {
     public function login(Request $request){
         // Autenticação via JWT 
-        $token = auth('api')->attempt($request->all(['email', 'password']));
+        $token = auth('api')->attempt($request->all(['nickname', 'password']));
         
         if($token){ // Usuário autenticado
             return response()->json(['token' => $token], 200);
