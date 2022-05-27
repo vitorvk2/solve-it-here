@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Chat extends Model
 {
     use HasFactory;
-    protected $filleable = ['titulo', 'descricao', 'user_id' , 'categoria_id'];
+    protected $fillable  = ['titulo', 'descricao', 'user_id' , 'categoria_id'];
 
     public function user(){
         return $this->belongsTo(User::class);

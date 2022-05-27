@@ -23,15 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-/*
-//Pode ser requisitado sem login
-Route::prefix('free')->group(function (){
-
-});
-
-
 //Apenas com login
 Route::prefix('v1')->middleware('jwt.auth')->group(function (){
-
+    Route::apiResource('categoria', \App\Http\Controllers\CategoriaController::class);
 });
-*/

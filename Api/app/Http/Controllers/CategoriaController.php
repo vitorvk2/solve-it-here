@@ -5,27 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
+use App\Repositories\CategorieRepository;
+use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+    public function __construct(Categoria $categoria){
+        $this->categoria = $categoria;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $repository = new CategorieRepository($this->categoria);
+        $repository->relationships('chat');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if($request->has('filtro')){
+            $repository->filter($request->filtro);
+        }
+
+        $data = $repository->getResult();
+        return response()->json($data, 200);
+
     }
 
     /**
@@ -36,7 +41,9 @@ class CategoriaController extends Controller
      */
     public function store(StoreCategoriaRequest $request)
     {
-        //
+        $data = $this->categoria->create($request->all());
+        return response()->json($data, 201);
+
     }
 
     /**
@@ -45,20 +52,18 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoria $categoria)
+    public function show(Request $request, $id)
     {
-        //
-    }
+        $repository = new CategorieRepository($this->categoria);
+        $repository->relationships('chat');
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Categoria  $categoria
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Categoria $categoria)
-    {
-        //
+        if($request->has('filtro')){
+            $repository->filter($request->filtro);
+        }
+
+        $data = $repository->findOrFail($id);
+        return response()->json($data, 200);
+
     }
 
     /**
@@ -68,9 +73,15 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
+    public function update(UpdateCategoriaRequest $request, $id)
     {
-        //
+        $data = $this->categoria->findOrFail($id);
+
+        $data->fill($request->all());
+        $data->save();
+
+        return response($data, 200);
+
     }
 
     /**
@@ -79,8 +90,15 @@ class CategoriaController extends Controller
      * @param  \App\Models\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+        $data = $this->categoria->findOrFail($id);
+
+        $data->delete();
+
+        return response([
+            'message' => 'Removido com sucesso'
+        ], 200);
+
     }
 }

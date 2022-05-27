@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Categoria extends Model
 {
     use HasFactory;
-    private $filleable = ['nome'];
+    protected $fillable = ['nome'];
 
     public function chat(){
         return $this->hasMany(Chat::class);
