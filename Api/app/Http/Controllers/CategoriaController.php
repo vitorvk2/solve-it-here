@@ -93,7 +93,6 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         $data = $this->categoria->findOrFail($id);
-
         $data->delete();
 
         return response([

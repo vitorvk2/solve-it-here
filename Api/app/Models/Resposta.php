@@ -15,6 +15,6 @@ class Resposta extends Model
     }
 
     public function chat(){
-        return $this->hasOne(Chat::class);
+        return $this->belongsTo(Chat::class);
     }
 }

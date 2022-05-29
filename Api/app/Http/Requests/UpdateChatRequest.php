@@ -24,7 +24,9 @@ class UpdateChatRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titulo' => 'required|min:3|max:100',
+            'descricao'  => 'required|min:3',
+            'categoria_id' => 'required|exists:categorias,id'
         ];
     }
 }

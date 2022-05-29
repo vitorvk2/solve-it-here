@@ -17,13 +17,13 @@ class CreateRespostasTable extends Migration
             $table->id();
             $table->timestamps();
             $table->longText('resposta');
-            $table->integer('upvote');
+            $table->integer('upvote')->nullable();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->unsignedBigInteger('chat_id');
-            $table->foreign('chat_id')->references('id')->on('chats');
+            $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
         });
     }
 

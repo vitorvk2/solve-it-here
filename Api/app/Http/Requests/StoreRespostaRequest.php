@@ -24,7 +24,8 @@ class StoreRespostaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'resposta' => 'required|min:3',
+            'chat_id' => 'required|exists:chats,id',
         ];
     }
 }

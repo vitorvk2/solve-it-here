@@ -19,7 +19,6 @@ class CreateChatsTable extends Migration
             $table->string('titulo');
             $table->longText('descricao');
 
-            //foreign key
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
