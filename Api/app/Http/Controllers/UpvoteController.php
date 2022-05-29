@@ -11,6 +11,7 @@ class UpvoteController extends Controller
 {
     public function action($id)
     {
+        //Essa lógica não funciona, refatorar.
         $data = Resposta::findOrFail($id);
 
         if(is_null($data->upvote_id)){
