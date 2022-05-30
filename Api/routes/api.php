@@ -28,5 +28,6 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function (){
     Route::apiResource('categoria', \App\Http\Controllers\CategoriaController::class);
     Route::apiResource('chat', \App\Http\Controllers\ChatController::class);
     Route::apiResource('respostas', \App\Http\Controllers\RespostaController::class);
-    Route::post('upvote/{id}', 'App\Http\Controllers\UpvoteController@action');
+    Route::post('upvote/{id}', 'App\Http\Controllers\UpvoteController@upvote');
+    Route::post('revoke/{id}', 'App\Http\Controllers\UpvoteController@revoke');
 });
