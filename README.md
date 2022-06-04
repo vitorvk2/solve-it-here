@@ -25,3 +25,5 @@ $ php artisan migrate --seed
 ```bash
 $ php artisan serve
 ```
+
+Tudo pronto, meu rei. ✔️
