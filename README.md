@@ -1,29 +1,33 @@
-# ResolveAqui
-> Requisitos: **PHP** versão superior a 7.9 e **Composer**
+# SolveItHere
+This project was developed during university. It is an API designed to enable people to connect and solve problems together.
 
+---
 
-### Objetivos
-Intermediar conflitos, criando um ambiente próspero para a resolução dos mesmos por meio da comunicação entre diversas pessoas.
+> Requirements: **PHP** version 7.9 or higher and **Composer**
 
-### Instalação
-+ Ambiente
+### Objectives
+To mediate conflicts by creating a prosperous environment for their resolution through communication among various people.
+
+### Installation
++ Environment
 ```bash
-$ git clone (esse projeto) em qualquer diretório
+$ git clone (this project) into any directory
 
 $ composer update
 
-Copie e cole o .env.example renomeando-o para .env
+Copy and paste the .env.example file, renaming it to .env
 ```
-+ Configurações e Criação das Tabelas
++ Configuration and Table Creation
 ```bash
-Dentro do diretório 'Api/database' crie o arquivo database.sqlite
+Inside the 'Api/database' directory, create the database.sqlite file
 
-Rode o comando para criar as tabelas e popular automaticamente:
+Run the command to create the tables and populate automatically:
 $ php artisan migrate --seed               
 ```
-+ Rodando o ambiente
++ Running the environment
 ```bash
 $ php artisan serve
 ```
 
-Tudo pronto, meu rei. ✔️
+
+
